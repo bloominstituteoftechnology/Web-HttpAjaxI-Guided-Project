@@ -11,10 +11,10 @@ const StyledContainer = styled.div`
 
 export default class Container extends React.Component {
   state = {
-    friend: null
+    friend: null,
   }
 
-  componentDidMount() {
+  fetchFriendWithNativeFetch = () => {
     fetch('http://localhost:3000/api/friends/1')
       .then(response => {
         return response.json();
@@ -23,7 +23,10 @@ export default class Container extends React.Component {
         console.log(parsedData);
         this.setState({ friend: parsedData });
       });
+  }
 
+  componentDidMount() {
+    this.fetchFriendWithNativeFetch();
     console.log('whatever');
     // the happy console.log has not executed at this line yet
     // When the promise resolves, the browser will know.
