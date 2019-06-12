@@ -57,6 +57,19 @@ export default class Container extends React.Component {
       });
   }
 
+  fetchFriendWithAxiosUsingAsyncAwaitSyntax = async () => {
+    // turn spinner on
+    this.setState({ spinner: true });
+    try {
+      const axiosData = await axios.get('http://localhost:3000/api/friends/2');
+      this.setState({ friend: axiosData.data });
+    } catch (err) {
+      this.setState({ errorMessage: err.message });
+    } finally {
+      this.setState({ spinner: false });
+    }
+  }
+
   fetchFriendWithJQuery = () => {
     $.ajax({
       url: 'http://localhost:3000/api/friends/3',
@@ -70,7 +83,7 @@ export default class Container extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchFriendWithJQuery();
+    this.fetchFriendWithAxiosUsingAsyncAwaitSyntax();
   }
 
   render() {
