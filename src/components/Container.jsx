@@ -10,6 +10,19 @@ const StyledContainer = styled.div`
 `;
 
 export default class Container extends React.Component {
+  componentDidMount() {
+    fetch('http://localhost:3000/api/friends/1')
+      .then(response => {
+        return response.json();
+      })
+      .then(parsedData => {
+        console.log(parsedData);
+      });
+    // the happy console.log has not executed at this line yet
+    // When the promise resolves, the browser will know.
+    // IT will run this callback we put in the .then()
+  }
+
   render() {
     return (
       <StyledContainer>
