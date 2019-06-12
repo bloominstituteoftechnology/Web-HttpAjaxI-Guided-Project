@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 // import $ from 'jquery';
-// import axios from 'axios';
 
 
 const StyledContainer = styled.div`
@@ -41,8 +41,24 @@ export default class Container extends React.Component {
       });
   }
 
+  fetchFriendWithAxios = () => {
+    // turn spinner on
+    this.setState({ spinner: true });
+
+    axios.get('http://localhost:3000/api/friends/2')
+      .then(response => {
+        this.setState({ friend: response.data });
+      })
+      .catch(error => {
+        // do something
+      })
+      .finally(() => {
+        // do something
+      });
+  }
+
   componentDidMount() {
-    this.fetchFriendWithNativeFetch();
+    this.fetchFriendWithAxios();
   }
 
   render() {
