@@ -10,6 +10,10 @@ const StyledContainer = styled.div`
 `;
 
 export default class Container extends React.Component {
+  state = {
+    friend: null
+  }
+
   componentDidMount() {
     fetch('http://localhost:3000/api/friends/1')
       .then(response => {
@@ -17,7 +21,10 @@ export default class Container extends React.Component {
       })
       .then(parsedData => {
         console.log(parsedData);
+        this.setState({ friend: parsedData });
       });
+
+    console.log('whatever');
     // the happy console.log has not executed at this line yet
     // When the promise resolves, the browser will know.
     // IT will run this callback we put in the .then()
@@ -26,7 +33,9 @@ export default class Container extends React.Component {
   render() {
     return (
       <StyledContainer>
-        HTTP/AJAX
+        {
+          this.state.friend && <div>{this.state.friend.name}</div>
+        }
       </StyledContainer>
     );
   }
