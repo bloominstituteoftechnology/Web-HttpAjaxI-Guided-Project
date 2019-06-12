@@ -7,35 +7,42 @@ import styled from 'styled-components';
 const StyledContainer = styled.div`
   padding: 20px;
   height: 100%;
+
+  .error {
+    color: red;
+  }
 `;
 
 export default class Container extends React.Component {
   state = {
     friend: null,
+    errorMessage: '',
   }
 
   fetchFriendWithNativeFetch = () => {
-    fetch('http://localhost:3000/api/friends/1')
+    fetch('http://localhost:3000/api/friend/1')
       .then(response => {
         return response.json();
       })
       .then(parsedData => {
-        console.log(parsedData);
         this.setState({ friend: parsedData });
+      })
+      .catch(error => {
+        this.setState({ errorMessage: error.message });
       });
   }
 
   componentDidMount() {
     this.fetchFriendWithNativeFetch();
-    console.log('whatever');
-    // the happy console.log has not executed at this line yet
-    // When the promise resolves, the browser will know.
-    // IT will run this callback we put in the .then()
   }
 
   render() {
     return (
       <StyledContainer>
+        {
+          this.state.errorMessage &&
+          <div className='error'>{this.state.errorMessage}</div>
+        }
         {
           this.state.friend && <div>{this.state.friend.name}</div>
         }
