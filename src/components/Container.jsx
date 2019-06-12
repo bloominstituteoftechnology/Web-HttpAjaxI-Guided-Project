@@ -20,7 +20,7 @@ export default class Container extends React.Component {
   }
 
   fetchFriendWithNativeFetch = () => {
-    fetch('http://localhost:3000/api/friends/1')
+    fetch('http://localhost:3000/api/friends/2')
       .then(response => {
         return response.json();
       })
@@ -43,6 +43,7 @@ export default class Container extends React.Component {
           this.state.errorMessage &&
           <div className='error'>{this.state.errorMessage}</div>
         }
+
         {
           this.state.friend &&
           <div>{this.state.friend.name}</div>
