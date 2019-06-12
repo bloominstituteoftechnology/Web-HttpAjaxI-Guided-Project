@@ -1,12 +1,12 @@
 # How to Run this App
   * Clone repository.
   * Run `npm install` or `yarn install`.
-  * Run `npm run dev` or `yarn run dev`.
+  * Run `npm run dev` or `yarn dev`.
   * Run `npm test` or `yarn test`.
   * Serve `index.html` using `live-server` or similar.
 
 # Requirements
-We need `node` & `npm`, as well as packages `live-server` and `eslint` installed _globally_. VSCode's `eslint` extension is recommended. Command line commands are run inside the project folder. This guide uses npm but should work the same using yarn.
+We need `node` & `npm`. VSCode's `eslint` extension is recommended. Command line commands are run inside the project folder. This guide uses npm but should work the same using yarn.
 
 # Objectives
   * Learn about HTTP and AJAX.
@@ -16,8 +16,8 @@ We need `node` & `npm`, as well as packages `live-server` and `eslint` installed
 # Steps
   * Adjust Chrome Devtools settings to make the most of the Network tab.
   * Load a website and break down the `Network` tab.
-  * Set up a mock endpoint using `Mockable.io` that serves a person with an id, name and age.
-  * Explain `Postman` interface and make a request to our fake endpoint to prove it works.
+  * We can run server.js to spin up a server on localhost:3000 with a couple endpoints.
+  * Explain `Postman` interface and make a request to our endpoints to prove they work.
   * Set up a component to hold `error`, `loading` and `person` slices of state.
   * Build `setPerson`, `setError` methods.
   * Build a `fetchPerson` method that uses `fetch` to hit our endpoint. Focus on happy path.
