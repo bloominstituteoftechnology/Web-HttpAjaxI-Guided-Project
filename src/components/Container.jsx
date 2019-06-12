@@ -50,10 +50,10 @@ export default class Container extends React.Component {
         this.setState({ friend: response.data });
       })
       .catch(error => {
-        // do something
+        this.setState({ errorMessage: error.message });
       })
       .finally(() => {
-        // do something
+        this.setState({ spinner: false });
       });
   }
 
