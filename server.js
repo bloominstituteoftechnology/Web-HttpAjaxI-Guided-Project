@@ -14,4 +14,6 @@ app.get('/api/friends/1', (req, res) => res.json(friends[0]));
 app.get('/api/friends/2', (req, res) => res.json(friends[1]));
 app.get('/api/friends/3', (req, res) => res.json(friends[2]));
 
-app.listen(port, () => console.log(`Friends server listening on port ${port}!`));
+app.listen(port, () => console.log(
+  `Friends server listening on port ${port}!`,
+));
