@@ -17,18 +17,27 @@ export default class Container extends React.Component {
   state = {
     friend: null,
     errorMessage: '',
+    spinner: false,
   }
 
   fetchFriendWithNativeFetch = () => {
+    // turn spinner on
+    this.setState({ spinner: true });
+
     fetch('http://localhost:3000/api/friends/2')
       .then(response => {
         return response.json();
       })
       .then(parsedData => {
+        // happy path
         this.setState({ friend: parsedData });
       })
       .catch(error => {
+        // unhappy path
         this.setState({ errorMessage: error.message });
+      })
+      .finally(() => {
+        this.setState({ spinner: false });
       });
   }
 
@@ -42,6 +51,11 @@ export default class Container extends React.Component {
         {
           this.state.errorMessage &&
           <div className='error'>{this.state.errorMessage}</div>
+        }
+
+        {
+          this.state.spinner &&
+          <div className='loading'>Loading friends...</div>
         }
 
         {
