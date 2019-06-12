@@ -44,7 +44,8 @@ export default class Container extends React.Component {
           <div className='error'>{this.state.errorMessage}</div>
         }
         {
-          this.state.friend && <div>{this.state.friend.name}</div>
+          this.state.friend &&
+          <div>{this.state.friend.name}</div>
         }
       </StyledContainer>
     );
