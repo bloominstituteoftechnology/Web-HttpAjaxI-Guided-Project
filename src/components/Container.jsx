@@ -20,7 +20,7 @@ export default class Container extends React.Component {
   }
 
   fetchFriendWithNativeFetch = () => {
-    fetch('http://localhost:3000/api/friend/1')
+    fetch('http://localhost:3000/api/friends/1')
       .then(response => {
         return response.json();
       })
