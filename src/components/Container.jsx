@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-// import $ from 'jquery';
+import $ from 'jquery';
 
 
 const StyledContainer = styled.div`
@@ -57,8 +57,20 @@ export default class Container extends React.Component {
       });
   }
 
+  fetchFriendWithJQuery = () => {
+    $.ajax({
+      url: 'http://localhost:3000/api/friends/3',
+      success: response => {
+        this.setState({ friend: response });
+      },
+      error: error => {
+        this.setState({ errorMessage: error.statusText });
+      },
+    });
+  }
+
   componentDidMount() {
-    this.fetchFriendWithAxios();
+    this.fetchFriendWithJQuery();
   }
 
   render() {
